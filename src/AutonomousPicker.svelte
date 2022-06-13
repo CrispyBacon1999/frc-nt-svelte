@@ -1,28 +1,27 @@
-<script>
+<script lang="ts">
     import GridItem from "./grid/GridItem.svelte";
     import { onMount } from "svelte";
+    import NetworkTables from "./utils/networktables";
 
     export let ntKey = "/SmartDashboard/SendableChooser[0]";
 
     let options = [];
-    let currentSelection;
+    let currentSelection: string | undefined;
 
     export let colSpan = 1;
     export let rowSpan = 1;
 
     onMount(() => {
-        NetworkTables.addKeyListener(
+        NetworkTables.addKeyListener<string>(
             `${ntKey}/selected`,
-            (key, value, isNew) => {
-                console.log(key, value);
+            (_, value) => {
                 currentSelection = value;
             }
         );
         console.log(`${ntKey}/options`);
-        NetworkTables.addKeyListener(
+        NetworkTables.addKeyListener<string[]>(
             `${ntKey}/options`,
-            (key, value, isNew) => {
-                console.log(key, value);
+            (_, value) => {
                 options = value;
             }
         );
@@ -30,7 +29,6 @@
 
     const changeValue = (event) => {
         const newValue = event.target.value;
-        console.log(newValue);
         NetworkTables.setValue(`${ntKey}/selected`, newValue);
         currentSelection = newValue;
     };

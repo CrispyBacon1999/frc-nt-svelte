@@ -18,12 +18,9 @@ export let robotState = readable(
         isDSAttached: false,
     },
     (set) => {
-        console.log(NetworkTables);
-        console.log(NetworkTables.getKeys());
-        NetworkTables.addKeyListener(
+        NetworkTables.addKeyListener<number>(
             "/FMSInfo/FMSControlData",
-            (key, data, isNew) => {
-                console.log(data);
+            (_, data) => {
                 set({
                     isEnabled: Boolean(data & ENABLED_FLAG),
                     isAutonomous: Boolean(data & AUTO_FLAG),
@@ -35,7 +32,6 @@ export let robotState = readable(
             },
             true
         );
-        console.log("Registered robot state");
         return () => {};
     }
 );

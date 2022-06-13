@@ -18,9 +18,6 @@
 </div>
 
 <style>
-    .icon {
-    }
-
     .true {
         color: var(--true-boolean);
     }

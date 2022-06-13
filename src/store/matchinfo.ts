@@ -1,4 +1,5 @@
 import { readable } from "svelte/store";
+import NetworkTables from "../utils/networktables";
 
 const matchTypes = {
     0: "Unknown",
@@ -8,10 +9,9 @@ const matchTypes = {
 };
 
 export let eventName = readable("Some Event", (set) => {
-    NetworkTables.addKeyListener(
+    NetworkTables.addKeyListener<string>(
         "/FMSInfo/EventName",
-        (key, data, isNew) => {
-            console.log(data);
+        (_, data) => {
             set(data);
         },
         true
@@ -20,9 +20,9 @@ export let eventName = readable("Some Event", (set) => {
 });
 
 export let matchType = readable(matchTypes[0], (set) => {
-    NetworkTables.addKeyListener(
+    NetworkTables.addKeyListener<number>(
         "/FMSInfo/MatchType",
-        (key, data, isNew) => {
+        (_, data) => {
             set(matchTypes[data]);
         },
         true
@@ -30,9 +30,9 @@ export let matchType = readable(matchTypes[0], (set) => {
     return () => {};
 });
 export let matchNumber = readable(1, (set) => {
-    NetworkTables.addKeyListener(
+    NetworkTables.addKeyListener<number>(
         "/FMSInfo/MatchNumber",
-        (key, data, isNew) => {
+        (_, data) => {
             set(data);
         },
         true

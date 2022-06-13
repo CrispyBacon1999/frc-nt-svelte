@@ -1,6 +1,6 @@
-<script>
-    export let columns = 12;
-    export let rows = 5;
+<script lang="ts">
+    export let columns: number = 12;
+    export let rows: number = 5;
 </script>
 
 <div

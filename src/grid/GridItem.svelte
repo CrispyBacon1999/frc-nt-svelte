@@ -1,6 +1,6 @@
-<script>
-    export let rowSpan = 1;
-    export let colSpan = 1;
+<script lang="ts">
+    export let rowSpan: number = 1;
+    export let colSpan: number = 1;
 </script>
 
 <div

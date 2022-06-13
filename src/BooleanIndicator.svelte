@@ -1,17 +1,17 @@
-<script>
+<script lang="ts">
     import NetworkTables from "./utils/networktables";
     import { onMount } from "svelte";
     import GridItem from "./grid/GridItem.svelte";
 
     let value = false;
-    export let ntKey;
+    export let ntKey: string;
     export let rowSpan = 1;
     export let colSpan = 1;
 
     onMount(() => {
-        NetworkTables.addKeyListener(
+        NetworkTables.addKeyListener<boolean>(
             ntKey,
-            (key, data, isNew) => {
+            (_, data) => {
                 value = data;
             },
             true
