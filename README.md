@@ -1,5 +1,9 @@
 # FRC Network Tables Svelte
 
+![Minified Size](https://img.shields.io/bundlephobia/min/frc-nt-svelte?style=for-the-badge)
+![Build Status](https://img.shields.io/github/workflow/status/CrispyBacon1999/frc-nt-svelte/Publish?style=for-the-badge)
+![NPM Version](https://img.shields.io/npm/v/frc-nt-svelte?style=for-the-badge)
+
 This is a library for creating custom dashboards using the modern web framework Svelte. It's still heavily under development, but has several features built in already.
 
 ## Components
