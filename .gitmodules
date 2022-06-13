@@ -1,0 +1,3 @@
+[submodule "pynetworktables2js"]
+	path = pynetworktables2js
+	url = https://github.com/robotpy/pynetworktables2js.git
