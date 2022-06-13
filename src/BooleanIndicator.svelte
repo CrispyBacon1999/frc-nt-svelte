@@ -9,9 +9,13 @@
     export let colSpan = 1;
 
     onMount(() => {
-        NetworkTables.addKeyListener(ntKey, (key, data, isNew) => {
-            value = data;
-        });
+        NetworkTables.addKeyListener(
+            ntKey,
+            (key, data, isNew) => {
+                value = data;
+            },
+            true
+        );
     });
 </script>
 
