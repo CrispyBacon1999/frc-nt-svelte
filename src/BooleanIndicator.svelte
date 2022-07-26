@@ -8,9 +8,9 @@
     export let colSpan = 1;
 
     onMount(() => {
-        NetworkTables.addKeyListener<boolean>(
+        NetworkTables.addKeyListener(
             ntKey,
-            (_, data) => {
+            (_, data: boolean) => {
                 value = data;
             },
             true

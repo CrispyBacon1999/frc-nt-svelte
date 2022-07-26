@@ -17,9 +17,9 @@ export let robotState = readable(
         isDSAttached: false,
     },
     (set) => {
-        NetworkTables.addKeyListener<number>(
+        NetworkTables.addKeyListener(
             "/FMSInfo/FMSControlData",
-            (_, data) => {
+            (_, data: number) => {
                 set({
                     isEnabled: Boolean(data & ENABLED_FLAG),
                     isAutonomous: Boolean(data & AUTO_FLAG),

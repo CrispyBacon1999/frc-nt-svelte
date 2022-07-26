@@ -11,16 +11,16 @@
     export let rowSpan = 1;
 
     onMount(() => {
-        NetworkTables.addKeyListener<string>(
+        NetworkTables.addKeyListener(
             `${ntKey}/selected`,
-            (_, value) => {
+            (_, value: string) => {
                 currentSelection = value;
             }
         );
         console.log(`${ntKey}/options`);
-        NetworkTables.addKeyListener<string[]>(
+        NetworkTables.addKeyListener(
             `${ntKey}/options`,
-            (_, value) => {
+            (_, value: string[]) => {
                 options = value;
             }
         );

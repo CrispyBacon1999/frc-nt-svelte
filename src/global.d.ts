@@ -64,9 +64,9 @@ declare global {
 }
 
 declare const NetworkTables: {
-    addKeyListener<T>(
+    addKeyListener(
         key: string,
-        callback: (key: string, data: T, isNew: boolean) => void,
+        callback: (key: string, data: unknown, isNew: boolean) => void,
         immediateNotify?: boolean
     ): () => void;
     addConnectionListener(

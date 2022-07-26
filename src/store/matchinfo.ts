@@ -8,9 +8,9 @@ const matchTypes = {
 };
 
 export let eventName = readable("Some Event", (set) => {
-    NetworkTables.addKeyListener<string>(
+    NetworkTables.addKeyListener(
         "/FMSInfo/EventName",
-        (_, data) => {
+        (_, data: string) => {
             set(data);
         },
         true
@@ -19,9 +19,9 @@ export let eventName = readable("Some Event", (set) => {
 });
 
 export let matchType = readable(matchTypes[0], (set) => {
-    NetworkTables.addKeyListener<number>(
+    NetworkTables.addKeyListener(
         "/FMSInfo/MatchType",
-        (_, data) => {
+        (_, data: number) => {
             set(matchTypes[data]);
         },
         true
@@ -29,9 +29,9 @@ export let matchType = readable(matchTypes[0], (set) => {
     return () => {};
 });
 export let matchNumber = readable(1, (set) => {
-    NetworkTables.addKeyListener<number>(
+    NetworkTables.addKeyListener(
         "/FMSInfo/MatchNumber",
-        (_, data) => {
+        (_, data: number) => {
             set(data);
         },
         true

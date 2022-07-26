@@ -13,9 +13,9 @@
     export let colSpan: number = 1;
 
     onMount(() => {
-        NetworkTables.addKeyListener<number>(
+        NetworkTables.addKeyListener(
             ntKey,
-            (_, data) => {
+            (_, data: number) => {
                 timeRemaining = data;
             },
             true
