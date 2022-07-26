@@ -7,9 +7,6 @@ export { default as RobotState } from "./RobotState.svelte";
 export { default as AutonomousPicker } from "./AutonomousPicker.svelte";
 export { default as BooleanIndicator } from "./BooleanIndicator.svelte";
 
-// Utils
-export { default as NetworkTables } from "./utils/networktables";
-
 // Grid
 export { Grid, GridItem } from "./grid";
 
