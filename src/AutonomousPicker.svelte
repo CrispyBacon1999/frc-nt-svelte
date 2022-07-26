@@ -1,7 +1,6 @@
 <script lang="ts">
     import GridItem from "./grid/GridItem.svelte";
     import { onMount } from "svelte";
-    import NetworkTables from "./utils/networktables";
 
     export let ntKey = "/SmartDashboard/SendableChooser[0]";
 

@@ -1,7 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import GridItem from "./grid/GridItem.svelte";
-    import NetworkTables from "./utils/networktables";
 
     export let ntKey: string = "/SmartDashboard/Field";
     let xPos: number = 0;

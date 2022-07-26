@@ -1,5 +1,4 @@
 import { readable } from "svelte/store";
-import NetworkTables from "../utils/networktables";
 
 const matchTypes = {
     0: "Unknown",

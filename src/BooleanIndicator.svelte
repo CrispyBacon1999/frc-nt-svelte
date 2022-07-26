@@ -1,5 +1,4 @@
 <script lang="ts">
-    import NetworkTables from "./utils/networktables";
     import { onMount } from "svelte";
     import GridItem from "./grid/GridItem.svelte";
 

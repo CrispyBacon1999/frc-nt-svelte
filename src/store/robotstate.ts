@@ -1,5 +1,4 @@
 import { readable } from "svelte/store";
-import NetworkTables from "../utils/networktables";
 
 const ENABLED_FLAG = 0x01;
 const AUTO_FLAG = 0x02;
