@@ -1,5 +1,5 @@
 <script>
-    import { robotState } from ".";
+    import { robotState } from "./store/robotstate";
     import IoIosCheckmarkCircle from "svelte-icons/io/IoIosCheckmarkCircle.svelte";
     import IoIosCloseCircleOutline from "svelte-icons/io/IoIosCloseCircleOutline.svelte";
 </script>

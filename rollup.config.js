@@ -1,38 +1,50 @@
-import autoPreprocess from "svelte-preprocess";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import svelte from "rollup-plugin-svelte";
-import resolve from "@rollup/plugin-node-resolve";
+import autoPreprocess from "svelte-preprocess";
+import { terser } from "rollup-plugin-terser";
+
 import pkg from "./package.json";
 
+const production = !process.env.ROLLUP_WATCH;
 const name = pkg.name
     .replace(/^(@\S+\/)?(svelte-)?(\S+)/, "$3")
     .replace(/^\w/, (m) => m.toUpperCase())
     .replace(/-\w/g, (m) => m[1].toUpperCase());
 
-function typeCheck() {
-    return {
-        writeBundle() {
-            require("child_process").spawn("svelte-check", {
-                stdio: ["ignore", "inherit", "inherit"],
-                shell: true,
-            });
-        },
-    };
-}
-
 export default {
     input: "src/index.ts",
     output: [
-        { file: pkg.module, format: "es" },
-        { file: pkg.main, format: "umd", name },
+        {
+            file: pkg.module,
+            format: "es",
+            sourcemap: production,
+        },
+        {
+            file: pkg.main,
+            format: "umd",
+            name,
+            sourcemap: production,
+        },
     ],
     plugins: [
-        typeCheck(),
-        typescript({ sourceMap: true, rootDir: "./src" }),
+        commonjs(),
+        typescript({
+            tsconfig: "./tsconfig.json",
+            outDir: ".",
+            declaration: true,
+        }),
         svelte({
             preprocess: autoPreprocess(),
             emitCss: false,
         }),
-        resolve(),
+        resolve({
+            dedupe: ["svelte"],
+        }),
+        production && terser(),
     ],
+    watch: {
+        clearScreen: false,
+    },
 };

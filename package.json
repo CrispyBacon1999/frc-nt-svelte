@@ -1,15 +1,16 @@
 {
     "name": "frc-nt-svelte",
-    "svelte": "src/index.js",
+    "svelte": "src/index.ts",
     "module": "dist/index.mjs",
     "main": "dist/index.js",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "scripts": {
         "build": "rollup -c",
         "prepublishOnly": "npm run build"
     },
     "devDependencies": {
-        "@rollup/plugin-node-resolve": "^9.0.0",
+        "@rollup/plugin-commonjs": "^22.0.1",
+        "@rollup/plugin-node-resolve": "^13.3.0",
         "@rollup/plugin-typescript": "^8.3.3",
         "@tsconfig/svelte": "^3.0.0",
         "rollup": "^2.0.0",
@@ -21,13 +22,16 @@
         "typescript": "^4.7.3"
     },
     "keywords": [
-        "svelte"
+        "svelte",
+        "frc",
+        "networktables"
     ],
     "files": [
         "src",
         "dist"
     ],
     "dependencies": {
+        "rollup-plugin-terser": "^7.0.2",
         "svelte-icons": "^2.1.0"
     }
 }
